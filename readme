@@ -1,0 +1,7 @@
+http://www.cnblogs.com/yuananyun/p/5655025.html
+Phantomjs:
+    http://phantomjs.org/download.html
+    安装：sudo apt-get install phantomjs
+Casperjs:
+    http://casperjs.org/
+    Casperjs基于Phantomjs的封装，提供更人性化的api
