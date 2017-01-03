@@ -28,6 +28,7 @@ public class Casper extends HttpServlet {
 	private static  final boolean dele = false;
 	private String imageSubfix = "jpg";
 	private static final long serialVersionUID = 1L;
+	private static long index = 1;
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -53,8 +54,8 @@ public class Casper extends HttpServlet {
         String bgImagePath = null;
         Map<String, Object> resultMap = new HashMap<String, Object>();
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-        fullbgImagePath = tmpFolder + uuid + "_fullbg." + imageSubfix;
-        bgImagePath = tmpFolder + uuid + "_bg." + imageSubfix;
+        fullbgImagePath = tmpFolder+index+"_"+ uuid + "_fullbg." + imageSubfix;
+        bgImagePath = tmpFolder+index+"_"+ uuid + "_bg." + imageSubfix;
         try {
 	        CasperBean paramMap = toBean(params);
 	        List<String> fullbgSrcList = paramMap.getFullbgSrcArray();
@@ -79,8 +80,9 @@ public class Casper extends HttpServlet {
         	resultMap.put("position", -1);
         	resultMap.put("error", e.getMessage());
         }finally {
+        	index++;
         	response.getWriter().write(JSON.toJSONString(resultMap));
-        	logger.info(uuid+"_参数："+params);
+        	//logger.info(uuid+"_参数："+params);
             logger.info(uuid+"_结果："+JSON.toJSONString(resultMap));
         	//删除缓存的图片
         	if(dele){
