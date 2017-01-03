@@ -47,6 +47,7 @@ public class Casper extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.addHeader("Access-Control-Allow-Origin", "*");
+        response.setContentType("text/html;charset=UTF-8");
         String params = request.getParameter("params");
         String fullbgImagePath = null;
         String bgImagePath = null;
